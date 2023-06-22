@@ -27,6 +27,13 @@ namespace trackingapi.Controllers
             
         }
 
+            private readonly ILogger<IssueController> _logger;
+        public IssueController(IssueDbContext? context, ILogger<IssueController> logger) : this(context)
+        {
+            _logger = logger;
+        }
+
+
         [HttpGet("id")]
         [ProducesResponseType(typeof(Issue), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
